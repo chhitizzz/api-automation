@@ -27,7 +27,7 @@ def post_request():
     headers = {"Authorization": auth_token}
     data = {
         "name": "API Automation",
-        "email": "automate@test.com",
+        "email": "automate1@test.com",
         "gender": "male",
         "status": "active"
     }
@@ -67,8 +67,16 @@ def put_request(user_id):
 
 
 # DELETE Request
+def delete_request(user_id):
+    url = base_url + f"/public/v2/users/{user_id}"
+    print(f"DELETE Request URL: {url}")
+    headers = {"Authorization": auth_token}
+    response = requests.delete(url, headers=headers)
+    assert response.status_code == 204 
+    print(f"------ USER HAS BEEN DELETED ------")
 
 # Calling the requests
 # get_request()
 user_id = post_request()
-put_request(user_id)
+# put_request(user_id)
+delete_request(user_id)
