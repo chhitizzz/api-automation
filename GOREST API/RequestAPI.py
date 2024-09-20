@@ -21,7 +21,7 @@ def get_request():
     print(f"json response body: {json_str}")
 
 # POST Request 
-def post_requests():
+def post_request():
     url = base_url + "/public/v2/users/"
     print(f"POST Request URL: {url}")
     headers = {"Authorization": auth_token}
@@ -36,10 +36,26 @@ def post_requests():
     json_data = response.json()
     json_str = json.dumps(json_data, indent=4)
     print(f"json response body: {json_str}")
+    user_id = json_data["id"]
+    assert "name" in json_data
+    assert json_data["name"] == "API Automation"
+    return user_id 
 
 # PUT Request 
+def put_requests():
+    url = base_url + "/public/v2/users/"
+    print(f"POST Request URL: {url}")
+    headers = {"Authorization": auth_token}
+    data = {
+        "name": "API Automation",
+        "email": "testautomation@test.com",
+        "gender": "male",
+        "status": "active"
+    }
+
 
 # DELETE Request
 
 # Calling the requests
-get_request()
+# get_request()
+post_request()
