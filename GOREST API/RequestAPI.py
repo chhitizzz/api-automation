@@ -9,6 +9,14 @@ base_url = "https://gorest.co.in"
 # Authentication Token 
 auth_token = "Bearer dcbf5d16c6a97aaf3eeaa873c411c8edf18d6673edba15ee65ed2c03ba6f20ca"
 
+# Get random email id
+def generate_random_email():
+    domain = "test.com"
+    email_length = 10
+    random_string = ''.join(random.choice(string.ascii_lowercase) for _ in range(email_length))
+    email = random_string + "@" + domain
+    return email
+
 # GET Request
 def get_request():
     url = base_url + "/public/v2/users/"
@@ -27,7 +35,7 @@ def post_request():
     headers = {"Authorization": auth_token}
     data = {
         "name": "API Automation",
-        "email": "automate2@test.com",
+        "email": generate_random_email(),
         "gender": "male",
         "status": "active"
     }
@@ -48,7 +56,7 @@ def put_request(user_id):
     headers = {"Authorization": auth_token}
     data = {
         "name": "API Automation Labs",
-        "email": "testautomationlabs332@auto.com",
+        "email": generate_random_email(),
         "gender": "male",
         "status": "inactive"
     }
@@ -64,7 +72,6 @@ def put_request(user_id):
     print(f"json PUT response body: {json_str}")
     assert json_data["id"] == user_id
     assert json_data["name"] == "API Automation Labs"
-
 
 # DELETE Request
 def delete_request(user_id):
@@ -85,8 +92,8 @@ def get_deleted_user(user_id):
     print(f"------ RESOURCE NOT FOUND ------")
 
 # Calling the requests
-# get_request()
+get_request()
 user_id = post_request()
-# put_request(user_id)
+put_request(user_id)
 delete_request(user_id)
 get_deleted_user(user_id)
