@@ -27,7 +27,7 @@ def post_request():
     headers = {"Authorization": auth_token}
     data = {
         "name": "API Automation",
-        "email": "testautomation1281@test.com",
+        "email": "automate@test.com",
         "gender": "male",
         "status": "active"
     }
@@ -48,15 +48,15 @@ def put_request(user_id):
     headers = {"Authorization": auth_token}
     data = {
         "name": "API Automation Labs",
-        "email": "testautomationlabs32@auto.com",
+        "email": "testautomationlabs332@auto.com",
         "gender": "male",
-        "status": "inctive"
+        "status": "inactive"
     }
     response = requests.put(url, json=data, headers=headers)
 
     # Debugging
-    print(f"Response status code: {response.status_code}")
-    print(f"Response body: {response.text}")
+    # print(f"PUT Response status code: {response.status_code}")
+    # print(f"Response body: {response.text}")
 
     assert response.status_code == 200
     json_data = response.json()
