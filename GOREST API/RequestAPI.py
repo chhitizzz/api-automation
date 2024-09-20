@@ -18,7 +18,7 @@ def get_request():
     assert response.status_code == 200
     json_data = response.json()
     json_str = json.dumps(json_data, indent=4)
-    print(f"json response body: {json_str}")
+    print(f"json GET response body: {json_str}")
 
 # POST Request 
 def post_request():
@@ -27,7 +27,7 @@ def post_request():
     headers = {"Authorization": auth_token}
     data = {
         "name": "API Automation",
-        "email": "testautomation@test.com",
+        "email": "testautomation1281@test.com",
         "gender": "male",
         "status": "active"
     }
@@ -35,27 +35,40 @@ def post_request():
     assert response.status_code == 201
     json_data = response.json()
     json_str = json.dumps(json_data, indent=4)
-    print(f"json response body: {json_str}")
+    print(f"json POST response body: {json_str}")
     user_id = json_data["id"]
     assert "name" in json_data
     assert json_data["name"] == "API Automation"
     return user_id 
 
 # PUT Request 
-def put_requests():
-    url = base_url + "/public/v2/users/"
-    print(f"POST Request URL: {url}")
+def put_request(user_id):
+    url = base_url + f"/public/v2/users/{user_id}"
+    print(f"PUT Request URL: {url}")
     headers = {"Authorization": auth_token}
     data = {
-        "name": "API Automation",
-        "email": "testautomation@test.com",
+        "name": "API Automation Labs",
+        "email": "testautomationlabs32@auto.com",
         "gender": "male",
-        "status": "active"
+        "status": "inctive"
     }
+    response = requests.put(url, json=data, headers=headers)
+
+    # Debugging
+    print(f"Response status code: {response.status_code}")
+    print(f"Response body: {response.text}")
+
+    assert response.status_code == 200
+    json_data = response.json()
+    json_str = json.dumps(json_data, indent=4)
+    print(f"json PUT response body: {json_str}")
+    assert json_data["id"] == user_id
+    assert json_data["name"] == "API Automation Labs"
 
 
 # DELETE Request
 
 # Calling the requests
 # get_request()
-post_request()
+user_id = post_request()
+put_request(user_id)
