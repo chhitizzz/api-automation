@@ -1,62 +1,90 @@
-GoRest API Automation
+# Gorest API Automation with Python
 
-This project demonstrates an automated testing script to interact with the GoRest API using Python. The script performs basic CRUD operations (Create, Read, Update, and Delete) on user resources. It uses Python's requests library to send HTTP requests to the API and validate the responses.
-Features
+This repository demonstrates API automation for interacting with the [Gorest API](https://gorest.co.in). It includes sample scripts for performing **GET**, **POST**, **PUT**, and **DELETE** requests using Python's `requests` library and JSON data.
 
-    GET Users: Fetches and displays the list of users from the GoRest API.
-    POST User: Creates a new user with a randomly generated name and email.
-    PUT User: Updates the created user’s status to inactive and validates the changes.
-    DELETE User: Deletes the created user and verifies successful deletion.
-    Check Deletion: Verifies that the deleted user no longer exists.
+## Functionality
 
-Requirements
+The script covers the following operations:
 
-    Python 3.x
-    requests library
+1. **GET**: Fetch all users.
+2. **POST**: Create a new user with a randomly generated name and email.
+3. **PUT**: Update the user data (change email and status).
+4. **DELETE**: Delete the created user.
+5. **Verification**: Ensure that the deleted user no longer exists.
 
-You can install the requests library using pip:
+## Prerequisites
 
-bash
+Before running the script, ensure you have the following installed:
 
+- Python 3.x
+- `requests` library
+
+You can install the required package using `pip`:
+
+```bash
 pip install requests
 
-Setup
+How to Use
 
-    Clone the repository:
+    Clone this repository:
 
-bash
+    bash
 
 git clone https://github.com/yourusername/gorest-api-automation.git
 
-    Navigate to the project directory:
+Set up your Authentication Token in the script:
+
+    Replace the auth_token variable with your Gorest API token:
+
+    python
+
+    auth_token = "Bearer YOUR_AUTH_TOKEN_HERE"
+
+Run the script:
 
 bash
 
-cd gorest-api-automation
+    python api_automation.py
 
-    Add your authentication token inside the code or set it as an environment variable.
+Files Overview
 
-Usage
-Running the Script
+    api_automation.py: The main script containing all functions for API operations and testing.
+    generate_random_email(): Generates a random email for testing purposes.
+    generate_random_name(): Randomly generates a user name from a predefined list.
 
-This script is divided into the following sections:
+API Operations
 
-    get_request(): Fetches and prints the list of users.
-    post_request(): Creates a new user with randomly generated details and returns the user_id.
-    put_request(user_id, name_check): Updates the created user's status to inactive and ensures the name remains unchanged.
-    delete_request(user_id): Deletes the created user using the user_id.
-    get_deleted_user(user_id): Verifies that the user has been deleted by attempting to fetch the deleted user.
+    GET Request: Fetches all users from the API.
 
-To execute the script:
+    python
 
-bash
+get_request()
 
-python RequestAPI.py
+POST Request: Creates a new user with randomly generated credentials.
 
-Example Workflow
+python
 
-    Fetches a list of users from the GoRest API.
-    Creates a new user with a randomly generated name and email.
-    Updates the newly created user’s status to inactive.
-    Deletes the created user.
-    Verifies that the deleted user no longer exists.
+user_id, name_check = post_request()
+
+PUT Request: Updates the newly created user's email and status.
+
+python
+
+put_request(user_id, name_check)
+
+DELETE Request: Deletes the user created in the POST request.
+
+python
+
+delete_request(user_id)
+
+Check Deletion: Verifies that the user has been deleted.
+
+python
+
+    get_deleted_user(user_id)
+
+Important Notes
+
+    Security Warning: Handle your API token carefully. Avoid sharing or exposing it in public repositories.
+    Educational Use Only: This code is for learning and testing purposes. Ensure you comply with Gorest's API usage policies.
