@@ -23,68 +23,34 @@ You can install the required package using `pip`:
 
 ```bash
 pip install requests
+```
 
-How to Use
+## How to Use
 
-    Clone this repository:
+1. Clone this repository:
 
-    bash
+```bash
 
 git clone https://github.com/yourusername/gorest-api-automation.git
+```
 
-Set up your Authentication Token in the script:
+2. Set up your Authentication Token in the script:
 
     Replace the auth_token variable with your Gorest API token:
-
-    python
-
+```bash 
     auth_token = "Bearer YOUR_AUTH_TOKEN_HERE"
+```
 
-Run the script:
+3. Run the script:
 
-bash
+```bash
 
-    python api_automation.py
+    python RequestAPI.py
+```
 
-Files Overview
+## Files Overview
 
-    api_automation.py: The main script containing all functions for API operations and testing.
-    generate_random_email(): Generates a random email for testing purposes.
-    generate_random_name(): Randomly generates a user name from a predefined list.
-
-API Operations
-
-    GET Request: Fetches all users from the API.
-
-    python
-
-get_request()
-
-POST Request: Creates a new user with randomly generated credentials.
-
-python
-
-user_id, name_check = post_request()
-
-PUT Request: Updates the newly created user's email and status.
-
-python
-
-put_request(user_id, name_check)
-
-DELETE Request: Deletes the user created in the POST request.
-
-python
-
-delete_request(user_id)
-
-Check Deletion: Verifies that the user has been deleted.
-
-python
-
-    get_deleted_user(user_id)
-
-Important Notes
-
-    Security Warning: Handle your API token carefully. Avoid sharing or exposing it in public repositories.
-    Educational Use Only: This code is for learning and testing purposes. Ensure you comply with Gorest's API usage policies.
+1. RequestAPI.py: The main script containing all functions for API operations and testing.
+2. generate_random_email(): Generates a random email for testing purposes.
+3. generate_random_name(): Randomly generates a user name from a predefined list.
+   
