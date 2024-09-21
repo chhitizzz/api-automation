@@ -51,7 +51,7 @@ To execute the script:
 
 bash
 
-python automation.py
+python RequestAPI.py
 
 Example Workflow
 
